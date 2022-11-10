@@ -35,7 +35,7 @@ async def start_message(message: types.Message):
 @dp.message_handler(lambda message: message.text=='Русский' or message.text=='Английский' or
                     message.text=='Французский' or message.text=='Немецкий' or message.text=='Испанский' or 
                     message.text=='Португальский' or message.text=='Японский' or message.text=='Китайский')
-async def ru_eng(message: types.Message):
+async def dest_lang(message: types.Message):
     global lang
     languages={'Русский':'ru','Английский':'en','Французский':'fr',
                 'Немецкий':'de','Испанский':'es','Португальский':'pt',
@@ -45,7 +45,7 @@ async def ru_eng(message: types.Message):
 
 #перевод
 @dp.message_handler()
-async def print_res(message:types.Message):
+async def print_result(message:types.Message):
     global lang
     translated = translate_func (message.text,lang)
     await message.reply(translated.text)
