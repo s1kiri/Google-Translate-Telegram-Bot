@@ -14,15 +14,16 @@ translator=Translator()
 
 def translate_func(string,lang):
     return translator.translate(string, dest=str(lang))
-#бот
 
-logging.basicConfig(level=logging.INFO)
+#бот
+logging.basicConfig(level=logging.INFO) #логи
+
 bot = Bot(token=config.TOKEN)
 dp = Dispatcher(bot)
 
-global lang
-#старт и клавиатура
+global lang #lang - dest language, src language define auto
 
+#старт и клавиатура
 @dp.message_handler(commands='start')
 async def start_message(message: types.Message):
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
